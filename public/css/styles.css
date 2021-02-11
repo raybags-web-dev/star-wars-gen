@@ -1,0 +1,568 @@
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    overflow: hidden;
+    background: linear-gradient(rgba(5, 5, 5, 0.8), rgba(8, 8, 8, 0.5)), url("/public/img/uni2.jpeg") center/cover no-repeat fixed;
+}
+
+
+/* loader spinner styles */
+
+.loader {
+    position: absolute;
+    border: 5px solid #4d6d77;
+    border-radius: 50%;
+    border-top: 5px solid rgb(235, 103, 103);
+    border-bottom: 5px solid rgb(80, 6, 6);
+    backdrop-filter: blur(10px);
+    filter: grayscale(50%);
+    width: 150px;
+    height: 150px;
+    top: 35%;
+    left: 45%;
+    transform: translate(-45%, 45%);
+    z-index: 100;
+    -webkit-animation: spin .5s linear infinite;
+    animation: spin .5s linear infinite;
+}
+
+
+/* spinner animation */
+
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    min-height: 95vh;
+    min-width: 100vw;
+}
+
+.head {
+    display: flex;
+    flex: .3;
+    position: relative;
+    justify-content: space-between;
+    align-items: center;
+    height: 10%;
+    z-index: 5;
+    color: #581010;
+    min-width: 100vw;
+    padding: 1.5rem;
+}
+
+.head::before {
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 1.5%;
+    top: 90%;
+    left: 50%;
+    transition: all .5s;
+    animation-name: line_move;
+    animation-play-state: running;
+    animation-delay: 1.2s;
+    animation-duration: .7s;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in;
+    animation-fill-mode: forwards;
+    animation-direction: normal;
+    z-index: 1;
+    opacity: 1;
+    background-color: rgb(117, 20, 20);
+}
+
+.head::after {
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 1.5%;
+    top: 90%;
+    right: 50%;
+    transition: all .5s;
+    animation-name: line_move2;
+    animation-play-state: running;
+    animation-delay: 1.2s;
+    animation-duration: .7s;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+    animation-direction: normal;
+    z-index: 1;
+    opacity: 1;
+    background-color: rgb(117, 20, 20);
+}
+
+@keyframes line_move {
+    0% {
+        width: 0%;
+    }
+    50% {
+        width: 30%;
+    }
+    100% {
+        width: 10%;
+    }
+}
+
+@keyframes line_move2 {
+    0% {
+        width: 0%;
+    }
+    50% {
+        width: 30%;
+    }
+    100% {
+        width: 10%;
+    }
+}
+
+.head h2 {
+    font-size: 1.8rem;
+    padding: .2rem 0;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    letter-spacing: .5rem;
+    text-transform: capitalize;
+    opacity: .7;
+    color: #9b1111;
+    text-shadow: 1px 3px 0 #743a3a, 1px 13px 5px #572828;
+}
+
+.head .fas {
+    font-size: 2rem;
+    border: 4px solid rgb(56, 32, 32);
+    padding: .5rem;
+    transition: .5s;
+    opacity: .3;
+    color: rgb(241, 172, 67);
+    border-radius: 50%;
+    cursor: pointer;
+    -webkit-box-shadow: 1px 1px 9px 3px rgba(255, 255, 255, 0.56);
+    box-shadow: 1px 1px 9px 3px rgba(255, 255, 255, 0.56);
+    background: linear-gradient(rgba(109, 24, 24, 0.5), rgba(251, 251, 251, 0.5))
+}
+
+.head .fas:active {
+    transform: scale(1.1);
+}
+
+.charactor-container {
+    flex: 3;
+    width: 50%;
+    margin: auto;
+    z-index: 0;
+    border-radius: .4rem;
+    backdrop-filter: blur(100px);
+    box-shadow: -1px 10px 10px -2px rgba(85, 66, 66, 0.5);
+}
+
+
+/* star wars text styles */
+
+.starwars-main-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    overflow: hidden;
+}
+
+.fade {
+    position: relative;
+    width: 100%;
+    min-height: 60vh;
+    top: -25px;
+    background-image: linear-gradient(0deg, transparent, rgb(0, 0, 0) 75%);
+    z-index: 1;
+}
+
+.star-wars {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    height: 600px;
+    color: #feda4a;
+    font-family: 'Pathway Gothic One', sans-serif;
+    font-size: 500%;
+    font-weight: 600;
+    letter-spacing: 8px;
+    line-height: 180%;
+    perspective: 400px;
+    text-align: justify;
+}
+
+.crawl {
+    position: relative;
+    top: 99999px;
+    transform-origin: 50% 100%;
+    animation: crawl 60s linear;
+    animation-play-state: paused;
+}
+
+.crawl>.title {
+    font-size: 90%;
+    text-align: center;
+}
+
+.crawl>.title h1 {
+    margin: 0 0 100px;
+    text-transform: uppercase;
+}
+
+@keyframes crawl {
+    0% {
+        top: -100px;
+        transform: rotateX(20deg) translateZ(0);
+    }
+    100% {
+        top: -6000px;
+        transform: rotateX(15deg) translateZ(-2500px);
+    }
+}
+
+
+/* star wars text styles */
+
+.text {
+    opacity: .2;
+    margin-top: -2rem;
+    background: transparent
+}
+
+.text::before {
+    content: "";
+    position: absolute;
+    min-width: 900px;
+    min-height: 900px;
+    top: 0%;
+    left: 3%;
+    animation-name: rotateImage;
+    animation-delay: 4s;
+    animation-duration: 30s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+    animation-direction: normal;
+    opacity: .7;
+    z-index: 1;
+    border-radius: 50%;
+    text-overflow: hidden;
+    background: rgb(53, 84, 218);
+    filter: invert(10%);
+    -webkit-box-shadow: -1px 1px 8px 5px #050202;
+    box-shadow: -1px 1px 8px 5px #030303;
+    background: linear-gradient(rgba(248, 4, 4, 0.8), rgba(3, 3, 3, 0.5)), url("/public/img/wars2.jpeg") center/cover no-repeat fixed;
+}
+
+@keyframes rotateImage {
+    0% {
+        transform: rotate(100deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.moons,
+.stars {
+    position: absolute;
+    width: 300px;
+    height: 200px;
+}
+
+.moons {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: .5rem;
+    align-items: center;
+    left: 0%;
+    gap: .5rem;
+    top: 0%;
+    z-index: 1;
+    height: 100vh;
+    object-fit: contain;
+    -webkit-box-shadow: inset 5px 5px 15px 5px #3a0e0e;
+    box-shadow: inset -15px -5px 20px 2px #050505;
+    background: linear-gradient(rgba(75, 5, 5, 0.8), rgba(0, 0, 0, 0.5)), url("/public/img/wars3.jpeg") center/cover no-repeat fixed;
+}
+
+.stars {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: .5rem;
+    align-items: center;
+    z-index: 0;
+    right: 0%;
+    top: 0%;
+    height: 100vh;
+    object-fit: contain;
+    -webkit-box-shadow: inset 5px 5px 15px 5px #3a0e0e;
+    box-shadow: inset 15px 5px 5px 5px #050505;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(75, 5, 5, 0.8)), url("/public/img/wars3.jpeg") center/cover no-repeat fixed;
+}
+
+
+/* Moon styles */
+
+.moon {
+    width: 180px;
+    height: 180px;
+    transition: .5s;
+    border-radius: 50%;
+    backdrop-filter: blur(3000px);
+    box-shadow: 2px 2px 13px rgb(0, 0, 0, .5);
+    animation-name: rotateMoon;
+    animation-duration: 10s;
+    animation-delay: 3s;
+    cursor: pointer;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+    animation-direction: normal;
+    -webkit-box-shadow: 5px 5px 5px 0px #000000, inset 4px 4px 15px 0px #000000, inset 1px 0px 13px 5px rgba(0, 0, 0, 0.56);
+    box-shadow: 0px 0px 50px 10px #000000, inset 4px 4px 15px 0px #000000, inset 1px 0px 13px 5px rgba(0, 0, 0, 0.56);
+}
+
+.star {
+    width: 180px;
+    height: 180px;
+    transition: .5s;
+    border-radius: 50%;
+    z-index: 1;
+    cursor: pointer;
+    backdrop-filter: blur(3000px);
+    background: linear-gradient(rgba(14, 0, 0, 0.8), rgba(243, 0, 0, 0.5)), url("/public/img/wars2.jpeg") center/cover no-repeat fixed;
+    animation-name: rotateStar;
+    animation-duration: 30s;
+    animation-delay: 2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+    animation-direction: normal;
+}
+
+
+/* moon styles */
+
+.moons .moon:nth-child(1) {
+    background: linear-gradient(rgba(14, 0, 0, 0.8), rgba(80, 65, 65, 0.5)), url("/public/img/moon1.jpeg") center/cover no-repeat fixed;
+}
+
+.moons .moon:nth-child(2) {
+    background: linear-gradient(rgba(14, 0, 0, 0.8), rgba(56, 3, 3, 0.5)), url("/public/img/moon2.jpeg") center/cover no-repeat fixed;
+}
+
+.moons .moon:nth-child(3) {
+    background: linear-gradient(rgba(14, 0, 0, 0.8), rgba(19, 41, 26, 0.5)), url("/public/img/war5.jpg") center/cover no-repeat fixed;
+}
+
+.moons .moon:nth-child(4) {
+    background: linear-gradient(rgba(14, 0, 0, 0.8), rgba(80, 21, 62, 0.5)), url("/public/img/war5.jpg") center/cover no-repeat fixed;
+}
+
+
+/* star styles */
+
+.stars .star:nth-child(1) {
+    background: linear-gradient(rgba(212, 200, 86, 0.8), rgba(97, 42, 42, 0.5)), url("/public/img/wars2.jpeg") center/cover no-repeat fixed;
+    -webkit-box-shadow: 0px 0px 9px 2px #FFE938;
+    box-shadow: 0px 0px 50px 10px #000000, 0px 0px 9px 2px #FFE938;
+}
+
+.stars .star:nth-child(2) {
+    background: linear-gradient(rgba(248, 248, 242, 0.8), rgba(158, 21, 21, 0.5)), url("/public/img/wars2.jpeg") center/cover no-repeat fixed;
+    -webkit-box-shadow: 0px 0px 9px 2px #FF0505;
+    box-shadow: 0px 0px 50px 10px #000000, 0px 0px 9px 2px #FF0505;
+}
+
+.stars .star:nth-child(3) {
+    background: linear-gradient(rgba(214, 31, 159, 0.8), rgba(27, 33, 83, 0.5)), url("/public/img/wars2.jpeg") center/cover no-repeat fixed;
+    -webkit-box-shadow: 0px 0px 9px 2px #7DD9FF;
+    box-shadow: 0px 0px 50px 10px #000000, 0px 0px 9px 2px #7DD9FF;
+}
+
+.stars .star:nth-child(4) {
+    -webkit-box-shadow: 0px 0px 9px 2px #FFF140;
+    box-shadow: 0px 0px 50px 10px #000000, 0px 0px 9px 2px #FFF140;
+    background: linear-gradient(rgba(255, 5, 5, 0.8), rgba(93, 33, 128, 0.5)), url("/public/img/wars2.jpeg") center/cover no-repeat fixed;
+}
+
+@keyframes rotateMoon {
+    0% {
+        transform: rotate(100deg);
+    }
+    100% {
+        transform: rotate(-360deg);
+    }
+}
+
+@keyframes rotateStar {
+    0% {
+        transform: rotate(100deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.hide {
+    display: none;
+    visibility: hidden;
+}
+
+.error {
+    background: transparent;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem auto;
+    z-index: 100;
+}
+
+.inner-error-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.inner-error-box p {
+    color: rgb(252, 250, 250);
+    padding: 0 1rem;
+    font-size: 1.5rem;
+    line-height: 4rem;
+    text-shadow: #474747 3px 5px 2px;
+    text-shadow: 0 -1px 4px #FFF, 0 -2px 10px rgb(0, 0, 0), 0 -10px 20px #020202, 0 -18px 40px #F00;
+}
+
+._img {
+    position: absolute;
+    transition: 1s;
+    top: 0%;
+    left: 50%;
+    margin: auto;
+    cursor: pointer;
+    border-radius: .3rem;
+    transform: translate(-50%, 50%);
+    box-shadow: 2px 2px 13px rgba(199, 130, 130, 0.5);
+    z-index: 100;
+    backdrop-filter: blur(100px);
+}
+
+
+/* image stiles */
+
+.demo_image {
+    position: absolute;
+    min-width: 400px;
+    min-height: 100px;
+    display: flex;
+    transition: .5s;
+    align-items: center;
+    justify-self: center;
+    opacity: .7;
+    top: -10%;
+    padding: 1rem;
+    object-fit: cover;
+    -webkit-box-shadow: 5px 5px 5px 0px #000000, inset 4px 4px 15px 0px #000000, inset 1px 0px 13px 5px rgba(0, 0, 0, 0.56);
+    box-shadow: 0px 0px 20px 1px #360404, inset 4px 4px 15px 0px #000000, inset 1px 0px 13px 5px rgba(68, 9, 9, 0.56);
+}
+
+.image_received:hover ._img {
+    transition: .5s;
+    -webkit-box-shadow: 1px 1px 9px 5px rgba(0, 0, 0, 0.56);
+    box-shadow: 1px 1px 9px 5px rgba(0, 0, 0, 0.56);
+}
+
+.image_received:active ._img {
+    object-fit: cover;
+    background-position: center;
+    background-clip: content-box;
+    transition: .5s;
+    background-color: rgb(68, 19, 19);
+    opacity: .1;
+}
+
+
+/* details styles */
+
+.details-main-container {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    column-count: 2;
+    min-height: 100vh;
+    min-width: 100vh;
+    padding: 1rem;
+    top: 0;
+    width: 90%;
+    top: 0;
+    margin: auto;
+    z-index: 100;
+    color: white;
+}
+
+.details_1 {
+    position: relative;
+    height: 100vh;
+    width: 24%;
+    padding: 0 1rem;
+    font-size: 1.8rem;
+    color: rgb(241, 90, 90);
+    left: 11%;
+    opacity: .5;
+    font-style: italic;
+    user-select: none;
+    line-height: 5rem !important;
+    backdrop-filter: grayscale(100%);
+    bottom: 100%;
+    text-shadow: #530d0d 0px 2px 0px, #502315 0px -2px 0px;
+    background: linear-gradient(rgba(12, 12, 12, 0.5), rgba(3, 3, 3, 0.5)), url("") center/cover no-repeat fixed;
+}
+
+.details_2 {
+    position: relative;
+    height: 100vh;
+    width: 24%;
+    user-select: none;
+    padding: 0 1rem;
+    font-size: 1.8rem;
+    right: 10%;
+    color: rgb(126, 219, 49);
+    bottom: 10%;
+    opacity: .5;
+    font-style: italic;
+    bottom: 100%;
+    line-height: 5rem !important;
+    backdrop-filter: grayscale(100%);
+    text-shadow: #020202 2px 2px 0px, #a06b56 0px -2px 0px;
+    background: linear-gradient(rgba(5, 5, 5, 0.5), rgba(92, 43, 43, 0.5)), url("") center/cover no-repeat fixed;
+}
