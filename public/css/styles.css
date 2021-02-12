@@ -481,22 +481,52 @@ body {
 
 .demo_image {
     position: absolute;
-    min-width: 400px;
+    min-width: 450px;
     min-height: 100px;
     display: flex;
-    transition: .5s;
+    transition: .1s;
     align-items: center;
     justify-self: center;
-    opacity: .7;
+    opacity: 1;
     top: -10%;
     padding: 1rem;
     object-fit: cover;
+    animation-name: change_border;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-fill-mode: backwards;
+    animation-direction: alternate-reverse;
+    transition: all .3s;
     -webkit-box-shadow: 5px 5px 5px 0px #000000, inset 4px 4px 15px 0px #000000, inset 1px 0px 13px 5px rgba(0, 0, 0, 0.56);
-    box-shadow: 0px 0px 20px 1px #360404, inset 4px 4px 15px 0px #000000, inset 1px 0px 13px 5px rgba(68, 9, 9, 0.56);
+    box-shadow: 0px 0px 20px 1px #360404, inset 4px 4px 15px 0px #c41c1c, inset 1px 0px 13px 5px rgba(68, 9, 9, 0.56);
 }
 
-.image_received:hover ._img {
-    transition: .5s;
+@keyframes change_border {
+    0% {
+        -webkit-box-shadow: 5px 5px 5px 0px #000000, inset 4px 4px 15px 0px #000000, inset 1px 0px 13px 5px rgba(0, 0, 0, 0.56);
+        box-shadow: 0px 0px 20px 1px #360404, inset 4px 4px 15px 0px #fcfafa, inset 1px 0px 13px 5px rgba(243, 30, 30, 0.56);
+    }
+    25% {
+        -webkit-box-shadow: 5px 5px 5px 0px #000000, inset 4px 4px 15px 0px #000000, inset 1px 0px 13px 5px rgba(0, 0, 0, 0.56);
+        box-shadow: 0px 0px 20px 1px #341b3b, inset 4px 4px 15px 0px #926466, inset 1px 0px 13px 5px rgba(6, 246, 98, 0.56);
+    }
+    50% {
+        -webkit-box-shadow: 5px 5px 5px 0px #000000, inset 4px 4px 15px 0px #000000, inset 1px 0px 13px 5px rgba(0, 0, 0, 0.56);
+        box-shadow: 0px 0px 20px 1px #184121, inset 4px 4px 15px 0px #c41c1c, inset 1px 0px 13px 5px rgba(15, 108, 230, 0.56);
+    }
+    75% {
+        -webkit-box-shadow: 5px 5px 5px 0px #000000, inset 4px 4px 15px 0px #000000, inset 1px 0px 13px 5px rgba(0, 0, 0, 0.56);
+        box-shadow: 0px 0px 20px 1px #3f1313, inset 4px 4px 15px 0px #6dee8d, inset 1px 0px 13px 5px rgba(15, 9, 68, 0.56);
+    }
+    100% {
+        -webkit-box-shadow: 5px 5px 5px 0px #000000, inset 4px 4px 15px 0px #000000, inset 1px 0px 13px 5px rgba(0, 0, 0, 0.56);
+        box-shadow: 0px 0px 20px 1px #050505, inset 4px 4px 15px 0px #df04f3, inset 1px 0px 13px 5px rgba(153, 17, 243, 0.56);
+    }
+}
+
+.image_received:hover img {
+    transition: .5s !important;
     -webkit-box-shadow: 1px 1px 9px 5px rgba(0, 0, 0, 0.56);
     box-shadow: 1px 1px 9px 5px rgba(0, 0, 0, 0.56);
 }
@@ -506,8 +536,8 @@ body {
     background-position: center;
     background-clip: content-box;
     transition: .5s;
-    background-color: rgb(68, 19, 19);
-    opacity: .1;
+    background-color: rgb(218, 18, 18);
+    opacity: 1;
 }
 
 
@@ -518,6 +548,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    cursor: cell;
     column-count: 2;
     min-height: 100vh;
     min-width: 100vh;
@@ -538,7 +569,7 @@ body {
     font-size: 1.8rem;
     color: rgb(241, 90, 90);
     left: 11%;
-    opacity: .5;
+    opacity: 1;
     font-style: italic;
     user-select: none;
     line-height: 5rem !important;
@@ -558,11 +589,36 @@ body {
     right: 10%;
     color: rgb(126, 219, 49);
     bottom: 10%;
-    opacity: .5;
+    opacity: 1;
     font-style: italic;
     bottom: 100%;
     line-height: 5rem !important;
     backdrop-filter: grayscale(100%);
     text-shadow: #020202 2px 2px 0px, #a06b56 0px -2px 0px;
     background: linear-gradient(rgba(5, 5, 5, 0.5), rgba(92, 43, 43, 0.5)), url("") center/cover no-repeat fixed;
+}
+
+
+/* custom fade in class */
+
+.custom_fadein {
+    animation-name: fade_in_custom;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+    animation-direction: normal;
+    transition: all .3s;
+}
+
+@keyframes fade_in_custom {
+    0% {
+        opacity: 0;
+        filter: grayscale(100%);
+        backdrop-filter: blur(100px);
+    }
+    100% {
+        opacity: 1;
+        filter: grayscale(0%);
+    }
 }

@@ -28,11 +28,15 @@ $(document).ready(function() {
 
         $.get(`https://akabab.github.io/starwars-api/api/id/${random_number()}.json`, async function(data) {
             const { id, image, height, homeworld, cybernetics, mass, born, skinColor, name, species, eyeColor, gender, affiliations } = await data;
-            const [affiliate1, affiliate2, ...rest] = affiliations;
-
+            const [affiliate1, ...rest] = affiliations;
+            // generate image
             $('.image_received img')
                 .addClass('demo_image')
-                .removeClass('hide').attr({ 'src': image }).animate({ 'opacity': .5, transition: '.4s' });
+                .removeClass('hide').attr({ 'src': image })
+                .addClass('custom_fadein')
+                .on('animationend webkitAnimationEnd', function() {
+                    $(this).removeClass('custom_fadein');
+                })
 
             // stop starwars animation on click
             $('.crawl').css({ 'animation-play-state': 'paused' });
@@ -55,6 +59,7 @@ $(document).ready(function() {
                     if (index === index2) {
                         $(elemenet).text(data_content).animate({
                             letterSpacing: '5px',
+                            'opacity': '1',
                             'background-image': 'linear-gradient(to top, #fafafa 0%, #86312c 100%)',
                         });
                     }
@@ -67,7 +72,9 @@ $(document).ready(function() {
                 $(arry_2).each(function(index2, data_content) {
                     if (index === index2) {
                         $(elemenet).text(data_content).animate({
-                            letterSpacing: '2px',
+                            letterSpacing: '5px',
+                            'opacity': '1',
+
                             'background-image': 'linear-gradient(to top, #fafafa 0%, #86312c 100%)',
                         });
                     }
@@ -82,4 +89,13 @@ $(document).ready(function() {
         })
         // generate starwasr charactor prifile on click
     $(document).on('click', generateXter);
+
+
+    // Experimental API calls.
+    $.get(`https://swapi.dev/api/planets/`, async function(data) {
+        const { results, count } = await data;
+        const [obj1, ...rest] = results;
+        const { climate, created, diameter, edited, films, gravity, name, orbital_period, ...rest2 } = obj1
+
+    })
 })
