@@ -33,9 +33,9 @@ $(document).ready(function() {
             $('.image_received img')
                 .addClass('demo_image')
                 .removeClass('hide').attr({ 'src': image })
-                .addClass('custom_fadein')
+                .addClass('custom_fadein zoominImageCustom')
                 .on('animationend webkitAnimationEnd', function() {
-                    $(this).removeClass('custom_fadein');
+                    $(this).removeClass('custom_fadein zoominImageCustom');
                 })
 
             // stop starwars animation on click
@@ -49,19 +49,15 @@ $(document).ready(function() {
             // data remder hadnler
             $('.details-main-container').removeClass('hide');
             // data collection in array
-            const array_1 = [`ID: ${id}`, `Name: ${name}`, ` Birth: ${born}`, `Eye Color: ${eyeColor}`, `Gender: ${gender}`, `Home: ${homeworld}`];
-            const arry_2 = [`Improvements: ${cybernetics}`, `Weight: ${mass}`, `Species:${species}`, `Skin Color: ${skinColor}`, `Height: ${height}`, `Home World: ${affiliate1}`];
+            const array_1 = [`ID: ${id || 'Currently Unknown'}`, `Name: ${name || 'Currently Unknown'}`, ` Birth: ${born || 'Currently Unknown'}`, `Eye Color: ${eyeColor || 'Currently Unknown'}`, `Gender: ${gender || 'Currently Unknown'}`, `Home: ${homeworld || 'Currently Unknown'}`];
+            const arry_2 = [`Improvements: ${cybernetics || 'Currently Unknown'}`, `Weight: ${mass || 'Currently Unknown'}`, `Species:${species || 'Currently Unknown'}`, `Skin Color: ${skinColor || 'Currently Unknown'}`, `Height: ${height || 'Currently Unknown'}`, `Home World: ${affiliate1 || 'Currently Unknown'}`];
 
             // looping through paragraphs set 1
             $('.details_1 p').each(function(index, elemenet) {
                 // looping through data array 
                 $(array_1).each(function(index2, data_content) {
                     if (index === index2) {
-                        $(elemenet).text(data_content).animate({
-                            letterSpacing: '5px',
-                            'opacity': '1',
-                            'background-image': 'linear-gradient(to top, #fafafa 0%, #86312c 100%)',
-                        });
+                        $(elemenet).text(data_content).addClass('glassy');
                     }
                 })
             })
@@ -71,12 +67,7 @@ $(document).ready(function() {
                 // looping through data array 
                 $(arry_2).each(function(index2, data_content) {
                     if (index === index2) {
-                        $(elemenet).text(data_content).animate({
-                            letterSpacing: '5px',
-                            'opacity': '1',
-
-                            'background-image': 'linear-gradient(to top, #fafafa 0%, #86312c 100%)',
-                        });
+                        $(elemenet).text(data_content).addClass('glassy');
                     }
                 })
             })
@@ -84,18 +75,16 @@ $(document).ready(function() {
     }
 
     // clear interval on click for automatic randaring of profile
-    $('.crawl').on('animationend webkitAnimationEnd', () => {
-            setInterval(generateXter, 9000);
-        })
-        // generate starwasr charactor prifile on click
+    $('.crawl').on('animationend webkitAnimationEnd', () => setInterval(generateXter, 9000));
+    // generate starwasr charactor prifile on click
     $(document).on('click', generateXter);
 
 
     // Experimental API calls.
-    $.get(`https://swapi.dev/api/planets/`, async function(data) {
-        const { results, count } = await data;
-        const [obj1, ...rest] = results;
-        const { climate, created, diameter, edited, films, gravity, name, orbital_period, ...rest2 } = obj1
+    // $.get(`https://swapi.dev/api/planets/`, async function(data) {
+    //     const { results, count } = await data;
+    //     const [obj1, ...rest] = results;
+    //     const { climate, created, diameter, edited, films, gravity, name, orbital_period, ...rest2 } = obj1
 
-    })
+    // })
 })
